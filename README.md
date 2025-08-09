@@ -1,4 +1,4 @@
-# COMP2511 Sample Exam Q1–Q8 翻译与详解
+# COMP2511 Sample Exam 翻译与详解
 
 ## 目录
 - [Q1](#q1)
