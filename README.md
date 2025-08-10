@@ -25,6 +25,29 @@
 - [Q17](#q17)
 - [Q18](#q18)
 
+## Multiple Choice
+- [Question 1](#question-1)
+- [Question 2](#question-2)
+- [Question 3](#question-3)
+- [Question 4](#question-4)
+- [Question 5](#question-5)
+- [Question 6](#question-6)
+- [Question 7](#question-7)
+- [Question 8](#question-8)
+- [Question 9](#question-9)
+- [Question 10](#question-10)
+- [Question 11](#question-11)
+
+## Short Answer
+- [Short Answer Question 1](#short-answer-question-1)
+- [Short Answer Question 2](#short-answer-question-2)
+- [Short Answer Question 3](#short-answer-question-3)
+- [Short Answer Question 4](#short-answer-question-4)
+- [Short Answer Question 5](#short-answer-question-5)
+- [Short Answer Question 6](#short-answer-question-6)
+- [Short Answer Question 7](#short-answer-question-7)
+- [Short Answer Question 8](#short-answer-question-8)
+
 ---
 
 ## Q1
@@ -993,3 +1016,624 @@ sequenceDiagram
 - **顺序图元素**：`participant` 定义参与者，箭头表示消息流向。
 - **条件分支**：`alt/else` 用于不同执行路径。
 - **mermaid 语法**：简洁的文本表示，可自动渲染为图形。
+
+## Question 1
+**Original**  
+On a bike, there are one or more tyres.  
+The following relationship is an example of:
+
+A) Aggregation  
+B) Composition  
+C) Neither
+
+**中文翻译**  
+在一辆自行车上，有一个或多个轮胎。  
+这种关系属于：
+
+A）聚合（Aggregation）  
+B）组合（Composition）  
+C）都不是
+
+**答案**  
+`B) Composition`
+
+**解析**  
+轮胎是自行车的一部分，生命周期依赖于自行车，离开自行车就没有意义，这种强依赖的整体-部分关系在UML和面向对象建模中通常表示为**组合**（Composition）。  
+如果是聚合（Aggregation），轮胎可以独立存在，不依赖自行车的生命周期，这里显然不符合。
+
+**相关知识点**  
+- **组合（Composition）**：强拥有关系，部分的生命周期与整体一致，例如 `Car`–`Engine`。  
+- **聚合（Aggregation）**：弱拥有关系，部分可以独立存在，例如 `Team`–`Player`。  
+- UML 表示法：组合用实心菱形，聚合用空心菱形。
+
+---
+
+## Question 2
+**Original**  
+Consider the following lambda function which prints log. The type signature has been redacted.  
+`[redacted] logger = log -> System.out.println(log);`  
+Pick the most semantically correct type from the list below:
+
+A) Function<String, Boolean>  
+B) Consumer  
+C) Predicate  
+D) Supplier
+
+**中文翻译**  
+考虑以下会打印日志的lambda函数，类型签名已被隐藏：  
+`[已隐藏] logger = log -> System.out.println(log);`  
+从下面选项中选择最语义正确的类型：
+
+A）`Function<String, Boolean>`  
+B）`Consumer`  
+C）`Predicate`  
+D）`Supplier`
+
+**答案**  
+`B) Consumer`
+
+**解析**  
+- 该lambda接受一个参数 `log` 并执行打印，没有返回值，符合 **Consumer<T>** 的语义（接收输入进行处理，无返回结果）。  
+- `Function<String, Boolean>`：要求返回 `Boolean`，不符合。  
+- `Predicate`：接受T并返回 `boolean`，不符合。  
+- `Supplier`：无参数，有返回值，不符合。
+
+**相关知识点**  
+- **Consumer<T>**：`void accept(T t)`  
+- **Function<T, R>**：`R apply(T t)`  
+- **Predicate<T>**：`boolean test(T t)`  
+- **Supplier<T>**：`T get()`  
+
+---
+
+## Question 3
+**Original**  
+Grace is developing a simple application that generates a course outline for new CSE courses.  
+There are exactly three types of course outline - COMP, SENG and BINF. No other types or subtypes of courses exist. Each course outline is composed of two parts:  
+
+A randomly generated course code, in the format COMPXXXX, SENGXXXX, or BINFXXXX.  
+The lecturer of the course, randomly chosen from a provided list of all valid lecturers for either COMP, SENG, or BINF courses.  
+
+All course outlines have exactly these two features, nothing more or less.  
+Grace would like to pass one of the strings “COMP”, “SENG” or “BINF” to a particular method and receive an instance of an appropriate course outline in return.  
+Which of the following design patterns would be the most appropriate for this design?  
+
+A) Composite Pattern  
+B) Factory Pattern  
+C) Abstract Factory Pattern  
+D) Decorator Pattern
+
+**中文翻译**  
+Grace 正在开发一个简单应用，用于为新的 CSE 课程生成课程大纲。  
+课程大纲只有三种类型：COMP、SENG 和 BINF，没有其他类型或子类型。每个课程大纲由两部分组成：  
+
+- 随机生成的课程代码（格式为 COMPXXXX、SENGXXXX 或 BINFXXXX）  
+- 随机选择的授课教师（从该类型课程的合法教师列表中选出）  
+
+所有课程大纲都有且只有这两个特征，没有更多也不少。  
+Grace 希望将字符串 `"COMP"`、`"SENG"` 或 `"BINF"` 传递给某个方法，并返回对应课程大纲的实例。  
+以下哪种设计模式最适合该设计？  
+
+A）组合模式（Composite Pattern）  
+B）工厂模式（Factory Pattern）  
+C）抽象工厂模式（Abstract Factory Pattern）  
+D）装饰器模式（Decorator Pattern）
+
+**答案**  
+`B) Factory Pattern`
+
+**解析**  
+- **Factory Pattern** 用于根据传入参数返回特定类型的对象，隐藏创建逻辑。  
+- 此场景只需要一个方法，根据 `"COMP" | "SENG" | "BINF"` 返回对应课程大纲实例，完全符合工厂模式的适用场景。  
+- **Abstract Factory Pattern** 适用于生产多个相关产品族，这里不需要。  
+- **Composite Pattern** 是用来表示树形结构的，不相关。  
+- **Decorator Pattern** 用来动态增强对象功能，也不相关。
+
+**相关知识点**  
+- **Factory Method**：将对象创建逻辑封装起来，客户端无需知道具体实现类。  
+- **Abstract Factory**：创建一族相关对象。  
+- **Composite**：树形结构的组合。  
+- **Decorator**：运行时动态增强。
+
+## Question 4
+**Original**  
+The following is taken from a student’s Assignment II blog.
+
+In Assignment II, after I refactored the code, I started work on adding new features but found I had to go and modify everything because the design didn’t work with the new requirements.
+
+Which SOLID principle is being violated? Select the most suitable answer.
+
+A) Single Responsibility Principle  
+B) Open-Closed Principle  
+C) Liskov Substitution Principle  
+D) Interface Segregation Principle  
+E) Dependency Inversion Principle
+
+**中文翻译**  
+以下内容摘自一位学生的 Assignment II 博客。
+
+在 Assignment II 中，我重构了代码后，开始着手添加新功能，但发现必须修改所有地方，因为原有设计无法适配新需求。
+
+违反了哪一条 SOLID 原则？选择最合适的答案。
+
+A）单一职责原则  
+B）开闭原则  
+C）里氏替换原则  
+D）接口隔离原则  
+E）依赖反转原则
+
+**答案**  
+`B) Open-Closed Principle`
+
+**解析**  
+- 该描述表明每次新需求都需要修改现有代码，违反了 **开闭原则**（对扩展开放，对修改关闭）。  
+- **SRP**：关注职责单一，不是问题核心。  
+- **LSP**：关注子类替换，不是这里的问题。  
+- **ISP**：关注接口最小化，与此无关。  
+- **DIP**：关注抽象依赖，与此无直接关系。
+
+**相关知识点**  
+- **OCP（Open-Closed Principle）**：软件实体应对扩展开放，对修改关闭。  
+- 常见实现方式：接口、多态、策略模式等。
+
+---
+
+## Question 5
+**Original**  
+Which of the following statements is correct?
+
+A) Overloaded methods have the same method signature, while overridden methods have a different method signature.  
+B) Overloaded methods can have different access modifiers, while overridden methods must have the same access modifier.  
+C) Overloaded methods are defined in different classes, while overridden methods are defined in the same class.  
+D) Overloaded methods are resolved at compile-time, while overridden methods are resolved at runtime.
+
+**中文翻译**  
+以下哪项陈述是正确的？
+
+A）重载方法具有相同的方法签名，而重写方法具有不同的方法签名。  
+B）重载方法可以有不同的访问修饰符，而重写方法必须有相同的访问修饰符。  
+C）重载方法定义在不同的类中，而重写方法定义在同一个类中。  
+D）重载方法在编译时解析，重写方法在运行时解析。
+
+**答案**  
+`D) Overloaded methods are resolved at compile-time, while overridden methods are resolved at runtime.`
+
+**解析**  
+- **重载（Overloading）**：同名不同参数，编译期根据参数列表决定调用哪个方法。  
+- **重写（Overriding）**：子类覆盖父类方法，运行时根据对象实际类型决定调用版本。  
+- A 错：重载方法签名不同，重写方法签名相同。  
+- B 错：重写方法可以更宽松访问权限（不能更严格），不要求相同。  
+- C 错：重载方法可在同类或子类中，重写必定在父子类之间。
+
+**相关知识点**  
+- Java 方法绑定：  
+  - 编译期绑定：重载  
+  - 运行期绑定：重写  
+- 方法签名：方法名 + 参数类型列表（返回值不算在签名中）。
+
+## Question 6
+**Original**  
+Which of the following statements is untrue about method overriding?
+
+A) Constructors cannot be overridden  
+B) If a static method in the base class, is redefined in the sub-class, the later hides the method in the base class  
+C) In method overriding, run-time polymorphism ensures that instantiated, the call to any method in the base class will be resolved to the correct method, based on the run-time type of the object instantiated.  
+D) During method overriding, the overridden method in the sub-class can specify a less permissive access modifier
+
+**中文翻译**  
+以下关于方法重写的说法，哪一项是**不正确**的？
+
+A）构造函数不能被重写  
+B）如果在子类中重新定义了基类的静态方法，那么子类的方法会**隐藏**基类的方法  
+C）在方法重写中，运行时多态确保对基类方法的调用会基于对象的**运行时类型**解析到正确的方法实现  
+D）在方法重写时，子类中的重写方法可以使用**更严格**（更低可见性）的访问修饰符
+
+**答案**  
+`D) During method overriding, the overridden method in the sub-class can specify a less permissive access modifier`
+
+**解析**  
+- **D 错（即为不正确）**：重写时**不能降低可见性**，只能保持不变或放宽（如 `protected` → `public`）。  
+- **A 对**：构造器不参与继承，不能被重写。  
+- **B 对**：静态方法是**隐藏**（hiding），非重写。  
+- **C 对**：动态绑定依据对象运行时类型选择重写后的方法实现。
+
+**相关知识点**  
+- 重写（override）规则：相同签名、返回类型（或协变返回）、不降低可见性、不抛出更宽的受检异常集合。  
+- 静态方法、构造器、`private` 方法不参与重写。
+
+---
+
+## Question 7
+**Original**  
+A design pattern used to enhance a component’s functionality dynamically at run-time is:
+
+A) Composite Pattern  
+B) Decorator Pattern  
+C) Abstract Factory Pattern  
+D) Observer Pattern
+
+**中文翻译**  
+用于在**运行时**动态增强组件功能的设计模式是：
+
+A）组合模式  
+B）装饰器模式  
+C）抽象工厂模式  
+D）观察者模式
+
+**答案**  
+`B) Decorator Pattern`
+
+**解析**  
+- **Decorator** 通过包装在运行时叠加职责，不改变原对象类型。  
+- **Composite** 表达树形结构；**Abstract Factory** 负责创建对象族；**Observer** 处理事件通知。
+
+**相关知识点**  
+- 装饰器关键点：同接口、持有被装饰对象引用、在调用前/后附加行为、可多层叠加。
+
+---
+
+## Question 8
+**Original**  
+Which of the following exceptions must be handled by a try-catch block or declared?
+
+A) NullPointerException  
+B) MalformedURLException  
+C) ClassCastException  
+D) ArithmeticException
+
+**中文翻译**  
+下列哪一个异常**必须**通过 `try-catch` 捕获或在方法上声明（throws）？
+
+A）`NullPointerException`  
+B）`MalformedURLException`  
+C）`ClassCastException`  
+D）`ArithmeticException`
+
+**答案**  
+`B) MalformedURLException`
+
+**解析**  
+- **B 为受检异常（checked）**，必须捕获或声明。  
+- 其余为**运行时异常（unchecked）**，不强制捕获/声明。
+
+**相关知识点**  
+- Java 异常层次：`Exception`（含 checked）与 `RuntimeException`（unchecked）。  
+- I/O、反射、URL/网络解析常见为受检异常。
+
+---
+
+## Question 9
+**Original**  
+
+    class X {
+        public void a() {}
+    }
+    
+    class Y {
+        public void b() {}
+    }
+    
+    class Z extends X, Y {
+        protected void a() {}
+    
+        public void b() {}
+    
+        public void b(String arg) {}
+    }
+
+Now, consider the following statements about the code:
+
+(1) The code doesn’t compile because there is more than one class in the same file;  
+(2) The code doesn’t compile because double inheritance is not possible in Java;  
+(3) The code doesn’t compile because the methods a and b are not marked with @Override  
+(4) The code doesn't compile because you cannot overload a method that is overriding a method in a superclass;  
+(5) The code doesn’t compile because a cannot have its visibility reduced from the superclass to the subclass.  
+(6) The code does compile.
+
+Which of the following sets of statements about the code are true?
+
+A) (1), (2)  
+B) (1), (3), (5)  
+C) (2), (3), (4), (5)  
+D) (2), (5)  
+E) (2), (4), (5)  
+F) (6)
+
+**中文翻译**  
+考虑上面的代码，以下陈述中哪些是正确的？
+
+(1) 代码无法编译，因为同一个文件中有多个类；  
+(2) 代码无法编译，因为 Java 不支持多重继承；  
+(3) 代码无法编译，因为 `a` 和 `b` 方法没有加 `@Override` 注解；  
+(4) 代码无法编译，因为不能在重写方法的同时对其进行重载；  
+(5) 代码无法编译，因为 `a` 方法在子类中降低了可见性；  
+(6) 代码可以编译。
+
+**答案**  
+`D) (2), (5)`
+
+**解析**  
+- (2) 对：Java 类不支持多继承（可以多实现接口）。  
+- (5) 对：`a` 方法在父类中是 `public`，在子类中改为 `protected`，降低了可见性，不允许。  
+- (1) 错：Java 同文件可有多个非 public 类，且文件名与 public 类匹配即可。  
+- (3) 错：`@Override` 是可选注解。  
+- (4) 错：可以重载已重写的方法（方法签名不同即可）。
+
+**相关知识点**  
+- Java 单继承：`extends` 只能有一个类。  
+- 可见性规则：重写不能降低父类方法的可见性。  
+- 一个 `.java` 文件可有多个类，但最多一个 `public` 类且文件名需与之匹配。
+
+---
+
+## Question 10
+**Original**  
+Nick is currently working on a UNSW CSE system. Which of the following statements is most accurate about how Nick should build the system?
+
+A) The system should be built in Java so that Design Patterns can be used.  
+B) Documentation is unimportant as the code should be written so well it is understandable.  
+C) The design should allow new engineers to easily join the project after Nick has left.  
+D) Testing the system works is a lower priority than getting it working.
+
+**中文翻译**  
+Nick 正在开发一个 UNSW CSE 系统。以下哪项描述最准确地说明了他应如何构建该系统？
+
+A）系统应使用 Java 构建，这样就能使用设计模式。  
+B）文档不重要，因为代码应当写得足够清晰易懂。  
+C）系统设计应允许新的工程师在 Nick 离开后能轻松加入项目。  
+D）验证系统运行正确性比让系统先跑起来更低优先级。
+
+**答案**  
+`C) The design should allow new engineers to easily join the project after Nick has left.`
+
+**解析**  
+- 软件工程核心目标之一是**可维护性**与**可交接性**。  
+- 选 C 强调良好设计与可扩展性。  
+- A 错：设计模式与语言无关。  
+- B 错：文档是重要的沟通和维护工具。  
+- D 错：测试与实现同等重要，不能降低优先级。
+
+**相关知识点**  
+- 可维护性、可扩展性、可交接性是工程质量的重要衡量标准。  
+- 文档与测试是保证长期健康运行的关键。
+
+---
+
+## Question 11
+**Original**  
+Which of the following would be a valid use case for instanceof instead of getClass for checking the type of an object?
+
+A) Checking if an object complies with an interface so that we can use a method on that interface  
+B) Implementing the equals method for an object  
+C) It’s a trick question, you should never use instanceof in your code at all
+
+**中文翻译**  
+下列哪一项是使用 `instanceof` 而不是 `getClass` 检查对象类型的有效场景？
+
+A）检查对象是否实现了某个接口，以便调用该接口的方法  
+B）在实现对象的 `equals` 方法时  
+C）这是个陷阱问题，你根本不该在代码中使用 `instanceof`
+
+**答案**  
+`A) Checking if an object complies with an interface so that we can use a method on that interface`
+
+**解析**  
+- `instanceof` 可用于检查某对象是否实现了接口或是某类的实例（含其子类），适合多态判断。  
+- `getClass` 检查的是精确类型，不包含子类。  
+- B 中 `equals` 推荐用 `getClass` 避免跨类型相等。  
+- C 错：`instanceof` 有合理用法，不是绝对禁止。
+
+**相关知识点**  
+- `instanceof`：多态类型判断，返回 `true` 则可安全强转。  
+- `getClass()`：严格类型匹配。  
+- `equals` 设计：是否允许子类相等决定 `instanceof` 或 `getClass` 的使用。
+
+## Short Answer Question 1
+**Original**  
+For each code snippet:
+
+Identify the logic error present (1 mark); and  
+Write a failing assertion that would catch the logic error as part of a unit test (e.g. assertEquals(4, f(2))) (1 mark)
+
+**Part A**  
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (!(obj instanceof Article)) return false;
+
+        Article other = (Article) obj;
+
+        return this.title.equals(other.title) && this.views.equals(other.views);
+    }
+
+**Part B**  
+
+    public List<Integer> withoutOddNumbers(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number % 2 != 0) {
+                numbers.remove(number);
+            }
+        }
+        return new ArrayList<Integer>(numbers);
+    }
+
+**中文翻译**  
+对于每个代码片段：  
+1. 找出存在的逻辑错误（1分）  
+2. 写一个单元测试中会失败的断言来捕获这个错误（1分）
+
+**A 部分**：  
+- 逻辑错误：`views` 可能是 `int` 基本类型或 `Integer` 对象，直接 `.equals()` 可能导致空指针异常（NPE）或错误比较；此外，`equals` 比较中应确保与 `hashCode` 一致。  
+- 示例断言（假设错误是视图数比较导致相等性判断错误）：  
+  `assertFalse(new Article("T", null).equals(new Article("T", null)));`  
+
+**B 部分**：  
+- 逻辑错误：在增强 `for` 循环中修改 `numbers` 会抛出 `ConcurrentModificationException`。  
+- 示例断言（捕获异常）：  
+  `assertThrows(ConcurrentModificationException.class, () -> withoutOddNumbers(Arrays.asList(1, 2, 3)));`
+
+**相关知识点**  
+- `equals` 合同：自反性、对称性、传递性、一致性、与 `hashCode` 一致。  
+- 集合在遍历中修改：应使用迭代器的 `remove()` 或 `removeIf`。
+
+---
+
+## Short Answer Question 2
+**Original**  
+Two classes: `Angle` and `MathsHelper`（省略部分代码见原题）。  
+Which class do you think has better cohesion? Justify your answer.
+
+**中文翻译**  
+有两个类 `Angle` 和 `MathsHelper`（代码略）。  
+你认为哪个类的内聚性更高？请说明理由。
+
+**答案**  
+`Angle` 内聚性更高。
+
+**解析**  
+- `Angle` 类的所有方法都围绕一个核心概念（角度的创建、比较、加减等），数据和行为紧密相关。  
+- `MathsHelper` 类的方法分散处理不同领域逻辑（距离计算、可见性判断等），缺乏统一主题，属于低内聚。
+
+**相关知识点**  
+- 内聚性：类的职责集中程度。高内聚有助于可维护性和可读性。  
+- `MathsHelper` 属于“杂物类”代码味道（Utility Class God Object）。
+
+---
+
+## Short Answer Question 3
+**Original**  
+`Foo` / `Foo2` 代码涉及返回类型不兼容问题。问题要求解释协变、逆变、违反 LSP 的原因等。
+
+**中文翻译**  
+`Foo` / `Foo2` 代码编译错误：返回类型不兼容。  
+问题要求解释协变、逆变、违反 LSP 的原因及风险工程意义。
+
+**答案与解析**  
+a) **协变**（covariance）：子类方法返回类型可以是父类返回类型的子类型。  
+   **逆变**（contravariance）：方法参数类型在重写时可以是父类参数类型的父类型（Java 中不支持参数类型逆变重写）。  
+
+b) 代码编译失败是因为违反了**协变返回类型**规则，`List<String>` 不是 `ArrayList<String>` 的子类型关系在返回类型协变检查中不成立（泛型擦除相关）。  
+
+c) LSP 要求子类可替换父类且不改变程序性质。返回类型不兼容会破坏替换性，调用者期望父类返回类型但子类返回不同类型会导致类型安全问题。  
+
+d) 编译期错误优于运行期错误：在风险工程中，越早发现问题越低成本，编译错误可防止缺陷进入生产环境。
+
+**相关知识点**  
+- 协变返回类型允许更具体的返回值类型。  
+- 泛型擦除：Java 编译后泛型信息擦除到原始类型。
+
+---
+
+## Short Answer Question 4
+**Original**  
+团队尝试让 Sunstones 实现更易扩展，但修改 InventoryItem 总是破坏功能。  
+问题：指出存在的设计味道，并与 Shotgun Surgery 区分。
+
+**中文翻译**  
+在修改 Sunstones 实现时，总需要修改 InventoryItem 类且会导致出错。  
+指出设计味道，并说明与“散弹式修改”的区别。
+
+**答案与解析**  
+- 设计味道：**脆弱基类问题（Fragile Base Class）** 或 **高耦合**。  
+- 区别：  
+  - Shotgun Surgery：一个变更需要修改多个类。  
+  - 本例：单个类的修改会影响多个功能点，集中在基类的高耦合。
+
+**相关知识点**  
+- 高耦合降低可维护性。  
+- 解决方案：抽象、接口分离、组合代替继承。
+
+---
+
+## Short Answer Question 5
+**Original**  
+学生的嵌套 if 代码（涉及 CargoTrain/PassengerTrain）有多重类型判断。  
+a) 列出两种代码味道。  
+b) 解释底层设计问题及改进方法。
+
+**中文翻译**  
+a) 列出两种代码味道。  
+b) 说明底层设计问题及改进方法。
+
+**答案与解析**  
+a)  
+1. **类型检查（Type Checking）**：大量使用 `instanceof`。  
+2. **深层嵌套（Deep Nesting）**：降低可读性。  
+
+b)  
+- 问题：违反多态原则，业务逻辑依赖类型判断。  
+- 改进：将 `canLoad` 逻辑下放到各自类，通过方法重写消除类型判断，提升可扩展性。
+
+**相关知识点**  
+- 多态可替代显式类型判断。  
+- 深层嵌套可用卫语句、提前返回优化。
+
+---
+
+## Short Answer Question 6
+**Original**  
+Team Central 系统，项目经理更新进度，订阅者收到通知，可动态添加/移除订阅者。  
+问：使用哪种设计模式？说明理由。
+
+**中文翻译**  
+Team Central 系统：  
+- 项目经理更新进度（状态变化）  
+- 所有订阅者收到通知  
+- 订阅者可动态增删  
+
+问：用哪种设计模式？说明理由。
+
+**答案**  
+`Observer Pattern`
+
+**解析**  
+- 观察者模式定义对象间一对多依赖，当主题状态变化时，所有观察者自动收到通知。  
+- 本例中项目经理是主题（Subject），订阅者是观察者（Observer）。
+
+**相关知识点**  
+- 观察者模式解耦事件源与监听者。  
+- 支持运行时动态订阅与取消。
+
+---
+
+## Short Answer Question 7
+**Original**  
+Tina 团队测试 Task 3 功能：1000 tick 内未生成药水则测试失败。  
+问：问题与改进方法。
+
+**中文翻译**  
+Tina 团队写测试：运行 1000 tick，若未生成药水则失败。  
+问：此方法的问题与改进。
+
+**答案与解析**  
+- 问题：测试依赖随机性，结果不确定（非确定性测试）。  
+- 改进：  
+  - 控制随机数种子（Deterministic Seeding）。  
+  - 使用依赖注入替换随机数生成器。  
+  - 模拟或桩对象（Mock/Stubs）强制生成药水事件。
+
+**相关知识点**  
+- 测试应可重复、可预测。  
+- 随机性测试需控制变量。
+
+---
+
+## Short Answer Question 8
+**Original**  
+`StandardUNSWLatePenalty` 与 `COMP2511AssignmentIILatePenalty` 不同 postconditions。  
+问：是否符合 LSP。
+
+**中文翻译**  
+父类后置条件：罚分 ≤ 天数×5  
+子类后置条件：罚分 = 天数×2  
+问：是否符合 LSP。
+
+**答案与解析**  
+- 符合 LSP：子类收紧了罚分规则，仍然满足父类声明的“≤ 天数×5”条件，不破坏客户端对父类的预期。  
+- 若子类放宽条件超出父类约束，则会违反 LSP。
+
+**相关知识点**  
+- LSP：子类方法不能加强前置条件，不能削弱后置条件（此处是收紧后置条件的结果范围，仍满足父类约束）。
+
